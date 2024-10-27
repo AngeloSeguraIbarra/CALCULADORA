@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" href="style.css" rel="stylesheet" />
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="bubbles">
+        <span style="--i: 11"></span>
+        <span style="--i: 12"></span>
+        <span style="--i: 24"></span>
+        <span style="--i: 10"></span>
+        <span style="--i: 14"></span>
+        <span style="--i: 23"></span>
+        <span style="--i: 18"></span>
+        <span style="--i: 16"></span>
+        <span style="--i: 19"></span>
+        <span style="--i: 20"></span>
+        <span style="--i: 22"></span>
+        <span style="--i: 25"></span>
+        <span style="--i: 18"></span>
+        <span style="--i: 21"></span>
+        <span style="--i: 15"></span>
+        <span style="--i: 13"></span>
+        <span style="--i: 26"></span>
+        <span style="--i: 17"></span>
+        <span style="--i: 13"></span>
+        <span style="--i: 28"></span>
+      </div>
+      <div class="wrapper">
+        <h1>Calculadora</h1>
+      </div>
+      <div class="calculadora">
+        <input type="text" class="pantalla" id="pantalla" disabled />
+        <div class="botones">
+          <button class="boton superiores" onclick="limpiarPantalla()">
+            AC
+          </button>
+          <button class="boton superiores" onclick="cambiarSigno('')">
+            +/-
+          </button>
+          <button class="boton superiores" onclick="porcentaje('%')">%</button>
+          <button class="boton operador" onclick="agregarValor('/')">÷</button>
+
+          <button class="boton" onclick="agregarValor('7')">7</button>
+          <button class="boton" onclick="agregarValor('8')">8</button>
+          <button class="boton" onclick="agregarValor('9')">9</button>
+          <button class="boton operador" onclick="agregarValor('*')">×</button>
+
+          <button class="boton" onclick="agregarValor('4')">4</button>
+          <button class="boton" onclick="agregarValor('5')">5</button>
+          <button class="boton" onclick="agregarValor('6')">6</button>
+          <button class="boton operador" onclick="agregarValor('-')">-</button>
+
+          <button class="boton" onclick="agregarValor('1')">1</button>
+          <button class="boton" onclick="agregarValor('2')">2</button>
+          <button class="boton" onclick="agregarValor('3')">3</button>
+          <button class="boton operador" onclick="agregarValor('+')">+</button>
+
+          <button
+            class="boton"
+            onclick="agregarValor('0')"
+            style="grid-column: span 2"
+          >
+            0
+          </button>
+          <button class="boton" onclick="agregarValor('.')">.</button>
+          <button class="boton operador" onclick="calcularResultado()">
+            =
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      function agregarValor(valor) {
+        document.getElementById("pantalla").value += valor;
+      }
+
+      function limpiarPantalla() {
+        document.getElementById("pantalla").value = "";
+      }
+
+      function calcularResultado() {
+        try {
+          let resultado = eval(document.getElementById("pantalla").value);
+          document.getElementById("pantalla").value = resultado;
+        } catch {
+          document.getElementById("pantalla").value = "Error";
+        }
+      }
+      function cambiarSigno() {
+        let pantalla = document.getElementById("pantalla");
+        if (pantalla.value) {
+          pantalla.value = String(-parseFloat(pantalla.value));
+        }
+      }
+      function porcentaje() {
+        let pantalla = document.getElementById("pantalla");
+        if (pantalla.value) {
+          let valor = parseFloat(pantalla.value) / 100;
+          pantalla.value = valor;
+        }
+      }
+    </script>
+  </body>
+</html>
