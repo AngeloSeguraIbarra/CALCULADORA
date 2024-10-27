@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #0c192c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  display: flex;
+}
+
+.bubbles span {
+  width: 30px;
+  height: 30px;
+  background-color: #4fc3dc;
+  margin: 0 25px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #4fc3dc44, 0 0 50px #4fc3dc, 0 0 100px #4fc3dc;
+  animation: animate 15s linear infinite;
+  animation-duration: calc(125s / var(--i));
+}
+
+.bubbles span:nth-child(even) {
+  background-color: #ff2d75;
+  box-shadow: 0 0 0 10px #ff2d7544, 0 0 50px #ff2d75, 0 0 100px #ff2d75;
+}
+
+.contenido {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.calculadora {
+  width: 300px;
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pantalla {
+  width: 95%;
+  height: 60px;
+  background-color: #222;
+  color: #fff;
+  font-size: 24px;
+  text-align: right;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.boton {
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #444;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boton:active {
+  background-color: #666;
+}
+
+.boton.operador {
+  background-color: #ff9800;
+}
+
+.boton.superiores {
+  background-color: #979595;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(100vh) scale(0);
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+  }
+}
+
+.wrapper {
+  text-align: center;
+  h1 {
+    margin-left: -10px;
+    color: #fff;
+    font-size: 4em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Josefin Sans", sans-serif;
+    background: linear-gradient(
+      to right,
+      #fbc9da 10%,
+      #ed6494 50%,
+      #d0034b 60%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+}
